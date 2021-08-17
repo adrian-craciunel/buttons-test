@@ -1,25 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled, { ThemeProvider } from 'styled-components';
+import { Button } from './components/button';
+
+const theme = {
+  colors: {
+    primary: '#0d6efd',
+    secondary: '#6c757d',
+    danger: '#dc3545'
+  }
+};
+
+const Wrapper = styled.div`
+  & > button { 
+    display: block;
+    margin: 1.5rem;
+  }
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Wrapper>
+        <Button text="hey 0" variant="primary" type="submit"  />
+        <Button text="hey 1" variant="secondary" />
+        <Button text="hey 2" variant="danger" />
+        <Button text="hey 2" variant="primary" disabled />
+      </Wrapper>
+    </ThemeProvider>
   );
 }
 
